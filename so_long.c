@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:11:50 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/07 22:37:43 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/08 18:24:23 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static void	do_it(char **av)
 	int		fd;
 	char	*sm;
 	t_data	*my_data;
+	t_image	*image;
 
 	my_data = malloc(sizeof(t_data));
 	sm = ".ber";
@@ -54,7 +55,7 @@ static void	do_it(char **av)
 	}
 	my_data->count = check_line(my_data->fd);
 	check_maps(av[1], my_data);
-	open_window();
+	open_window(image, my_data);
 }
 
 int	main(int ac, char **av)
