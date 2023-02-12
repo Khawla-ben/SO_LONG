@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:07:02 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:13:05 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:41:21 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,6 @@ static void	if_function(t_data *my_data)
 
 int	draw_image_in_window(t_data *my_data)
 {
-	int	x;
-	int	y;
-
 	my_data->i = -1;
 	while (++my_data->i < my_data->count)
 	{

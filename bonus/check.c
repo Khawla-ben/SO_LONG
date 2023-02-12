@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:43:25 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/10 22:33:06 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:22:10 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	check_and_count(t_data *my_data)
 void	check_num_wall(t_data *my_data)
 {
 	my_data->line = get_next_line(my_data->fd);
-	if (my_data->line == NULL) //laho2a3lam
+	if (my_data->line == NULL)
 		return ;
 	my_data->num1 = (ft_strlen(my_data->line) - 1);
 	if (my_data->num != my_data->num1)

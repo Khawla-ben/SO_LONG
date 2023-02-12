@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:07:59 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:20:44 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:18:48 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ static void	check_line1(int fd, t_data *my_data)
 		else
 			my_data->i++;
 	}
+	free(my_data->line);
 }
 
 static void	check_last_line(int fd, t_data *my_data)
@@ -54,6 +55,7 @@ static void	check_last_line(int fd, t_data *my_data)
 		else
 			my_data->i++;
 	}
+	free(my_data->line);
 }
 
 static void	check_c_p_e(t_data *my_data)
@@ -65,7 +67,7 @@ static void	check_c_p_e(t_data *my_data)
 	}
 	if (my_data->c_p != 1)
 	{
-		write(2, "Error\nThe map must contain 1 position", 38);
+		write(2, "Error\nThe map must contain 1 player", 35);
 		exit (1);
 	}
 	if (my_data->c_c < 1)
@@ -98,6 +100,7 @@ void	check_maps(char *av, t_data *my_data)
 		my_data->i = 0;
 		while (my_data->line[my_data->i] != '\n')
 			check_and_count(my_data);
+		free(my_data->line);
 		my_data->y--;
 	}
 	check_c_p_e(my_data);
@@ -105,5 +108,4 @@ void	check_maps(char *av, t_data *my_data)
 	my_data->all = create_new_map(my_data->count1, av);
 	my_data->copy = create_new_map(my_data->count1, av);
 	back_tracking(my_data);
-	//7GHID RAD MAS7 LMAP
 }

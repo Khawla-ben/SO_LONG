@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 17:59:42 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:47:24 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 00:22:28 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,10 @@
 static void	write_move_in_win(t_data *my_data)
 {
 	my_data->move++;
+	my_data->itoa = ft_itoa(my_data->move);
 	mlx_string_put(my_data->mlx, my_data->mlx_win,
-		20, 10, 0xffffff, (ft_itoa(my_data->move)));
+		20, 10, 0xffffff, my_data->itoa);
+	free(my_data->itoa);
 	mlx_string_put(my_data->mlx, my_data->mlx_win, 07, 25, 0xffffff, "moves");
 }
 

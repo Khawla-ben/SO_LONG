@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:11:50 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:42:10 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:41:12 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static	int	check_line(int fd)
 	}
 	while (line != NULL)
 	{
+		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
@@ -35,7 +36,6 @@ static	int	check_line(int fd)
 
 static void	do_it(char **av)
 {
-	int		fd;
 	char	*sm;
 	t_data	*my_data;
 
@@ -56,13 +56,9 @@ static void	do_it(char **av)
 	check_maps(av[1], my_data);
 	open_window(my_data);
 }
-void f (void)
-{
-	system("leaks so_long");
-}
+
 int	main(int ac, char **av)
 {
-	// atexit(f);
 	if (ac == 2)
 		do_it(av);
 	else

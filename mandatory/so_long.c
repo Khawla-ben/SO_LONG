@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/05 16:11:50 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:26:31 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:12:12 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,12 @@ static	int	check_line(int fd)
 	line = get_next_line(fd);
 	if (line == NULL)
 	{
-		write (2, "Error\nfillmap!!", 16);
+		write (2, "Error\nfill map!!", 16);
 		exit(1);
 	}
 	while (line != NULL)
 	{
+		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
@@ -35,7 +36,6 @@ static	int	check_line(int fd)
 
 static void	do_it(char **av)
 {
-	int		fd;
 	char	*sm;
 	t_data	*my_data;
 
@@ -54,8 +54,6 @@ static void	do_it(char **av)
 	}
 	my_data->count = check_line(my_data->fd);
 	check_maps(av[1], my_data);
-		system("leaks so_long");
-
 	open_window(my_data);
 }
 

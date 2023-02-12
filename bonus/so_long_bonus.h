@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:03:46 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/10 22:03:48 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 00:21:02 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ typedef struct my_data
 	int		s;
 	int		move;
 	int		n_n;
+	char	*itoa;
 }t_data;
 
 //fold

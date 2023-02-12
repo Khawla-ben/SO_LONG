@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:07:02 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:19:47 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 15:10:29 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,6 @@ static void	if_function(t_data *my_data)
 
 int	draw_image_in_window(t_data *my_data)
 {
-	int	x;
-	int	y;
-
 	my_data->i = -1;
 	while (++my_data->i < my_data->count)
 	{
@@ -99,6 +96,8 @@ int	draw_image_in_window(t_data *my_data)
 			else if (my_data->all[my_data->i][my_data->j] == '1')
 				mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
 					my_data->im_wall, my_data->j * 60, my_data->i * 60);
+			else
+				if_function(my_data);
 		}
 	}
 	return (0);

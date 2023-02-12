@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:09:37 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 19:44:20 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/12 14:11:18 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ char	**create_new_map(int count, char *av)
 	int		j;
 	char	**all;
 	int		fd;
+	char	*line;
 
 	fd = open(av, O_RDONLY);
 	if (fd == -1)
@@ -30,7 +31,11 @@ char	**create_new_map(int count, char *av)
 	if (!all)
 		return (NULL);
 	while (++j < count)
-		all[j] = ft_strdup_n(get_next_line(fd));
+	{
+		line = get_next_line(fd);
+		all[j] = ft_strdup_n(line);
+		free(line);
+	}
 	return (all);
 }
 
