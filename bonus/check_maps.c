@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:07:59 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 14:11:30 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/14 13:57:28 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,8 @@ static void	initialize(t_data *my_data)
 	my_data->count1 = my_data->count;
 	my_data->y = my_data->count - 1;
 	my_data->n_n = 0;
+	my_data->n_n_n = 0;
+	my_data->m_n = 0;
 }
 
 void	check_maps(char *av, t_data *my_data)

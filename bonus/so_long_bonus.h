@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:03:46 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 00:21:02 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:37:38 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,9 @@ typedef struct my_data
 	int		s;
 	int		move;
 	int		n_n;
+	int		n_n_n;
 	char	*itoa;
+	int		m_n;
 }t_data;
 
 //fold
@@ -78,16 +80,17 @@ void	check_maps(char *av, t_data *my_data);
 void	back_tracking(t_data *my_data);
 void	check_and_count(t_data *my_data);
 void	check_num_wall(t_data *my_data);
-
+void	exit_f(void);
 //move_player
 int		out(void);
+void	write_move_in_win(t_data *my_data);
 
 //printf
 int		ft_printf(const char *s, ...);
 
-//enemy
-int		draw_enemy(t_data *my_data);
-
 //itoa
 char	*ft_itoa(int n);
+//enemy
+void	check_enemy(int i, int j, t_data *my_data);
+
 #endif

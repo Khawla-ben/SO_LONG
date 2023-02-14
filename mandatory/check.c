@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:43:25 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 14:22:00 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:57:59 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,4 +94,10 @@ int	check_direction(char check, t_data *my_data)
 		return (0);
 	else
 		return (1);
+}
+
+void	exit_f(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

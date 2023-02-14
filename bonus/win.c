@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:07:02 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 14:41:21 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/14 17:11:04 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	open_window(t_data *my_data)
 {
 	my_data->mlx = mlx_init();
+	if (!my_data->mlx)
+		exit_f();
 	create_image(my_data);
 	my_data->mlx_win = mlx_new_window(my_data->mlx,
 			my_data->num * 60, my_data->count * 60, "so_long!");
+	if (!my_data->mlx_win)
+		exit_f();
 	my_data->i = -1;
 	while (++my_data->i < my_data->count)
 	{
@@ -26,11 +30,19 @@ void	open_window(t_data *my_data)
 			mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
 				my_data->im_space, my_data->j * 60, my_data->i * 60);
 	}
-	draw_image_in_window(my_data);
+	mlx_loop_hook(my_data->mlx, draw_image_in_window, my_data);
 	mlx_hook(my_data->mlx_win, 02, 0, move_player, my_data);
 	mlx_hook(my_data->mlx_win, 17, 0, out, my_data);
-	mlx_loop_hook(my_data->mlx, draw_enemy, my_data);
 	mlx_loop(my_data->mlx);
+}
+
+static void	function_protect(t_data *my_data)
+{
+	if (!my_data->im_player || !my_data->im_player2 || !my_data->im_exit
+		|| !my_data->im_exit2 ||! my_data->im_collectible || !my_data->im_wall
+		|| !my_data->im_space || !my_data->im_enemy1
+		|| !my_data->im_enemy2 || !my_data->im_enemy3)
+		exit_f();
 }
 
 void	create_image(t_data *my_data)
@@ -58,6 +70,7 @@ void	create_image(t_data *my_data)
 			"images/n2.xpm", &img_width, &img_height);
 	my_data->im_enemy3 = mlx_xpm_file_to_image(my_data->mlx,
 			"images/n3.xpm", &img_width, &img_height);
+	function_protect(my_data);
 }
 
 static void	if_function(t_data *my_data)
@@ -84,9 +97,6 @@ static void	if_function(t_data *my_data)
 			mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
 				my_data->im_player, my_data->j * 60, my_data->i * 60);
 	}
-	else if (my_data->all[my_data->i][my_data->j] == 'N')
-		mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
-			my_data->im_enemy1, my_data->j * 60, my_data->i * 60);
 }
 
 int	draw_image_in_window(t_data *my_data)
@@ -97,6 +107,7 @@ int	draw_image_in_window(t_data *my_data)
 		my_data->j = -1;
 		while (++my_data->j < my_data->num)
 		{
+			write_move_in_win(my_data);
 			if (my_data->all[my_data->i][my_data->j] == '0')
 				mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
 					my_data->im_space, my_data->j * 60, my_data->i * 60);
@@ -106,6 +117,8 @@ int	draw_image_in_window(t_data *my_data)
 			else if (my_data->all[my_data->i][my_data->j] == '1')
 				mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
 					my_data->im_wall, my_data->j * 60, my_data->i * 60);
+			else if (my_data->all[my_data->i][my_data->j] == 'N')
+				check_enemy(my_data->i, my_data->j, my_data);
 			else
 				if_function(my_data);
 		}

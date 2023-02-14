@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:07:02 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 15:10:29 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:57:37 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,13 @@
 void	open_window(t_data *my_data)
 {
 	my_data->mlx = mlx_init();
+	if (!my_data->mlx)
+		exit_f();
 	create_image(my_data);
 	my_data->mlx_win = mlx_new_window(my_data->mlx,
 			my_data->num * 60, my_data->count * 60, "so_long!");
+	if (!my_data->mlx_win)
+		exit_f();
 	my_data->i = -1;
 	while (++my_data->i < my_data->count)
 	{
@@ -51,6 +55,10 @@ void	create_image(t_data *my_data)
 			"images/w.xpm", &img_width, &img_height);
 	my_data->im_player2 = mlx_xpm_file_to_image(my_data->mlx,
 			"images/p2.xpm", &img_width, &img_height);
+	if (!my_data->im_player || !my_data->im_player2 || !my_data->im_exit
+		|| !my_data->im_exit2 || !my_data->im_collectible
+		|| !my_data->im_space || !my_data->im_wall)
+		exit_f();
 }
 
 static void	if_function(t_data *my_data)

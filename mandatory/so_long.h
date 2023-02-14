@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 21:03:46 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/11 20:19:04 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:36:54 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	check_maps(char *av, t_data *my_data);
 void	back_tracking(t_data *my_data);
 void	check_and_count(t_data *my_data);
 void	check_num_wall(t_data *my_data);
-
+void	exit_f(void);
 //move_player
 int		out(void);
 

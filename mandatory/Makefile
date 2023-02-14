@@ -6,7 +6,7 @@
 #    By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/05 16:11:47 by kben-ham          #+#    #+#              #
-#    Updated: 2023/02/12 15:10:43 by kben-ham         ###   ########.fr        #
+#    Updated: 2023/02/13 14:51:14 by kben-ham         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ MLX = -lmlx -framework OpenGL -framework AppKit
 
 all: $(NAME)
 
-%.o: %.c so_long_bonus.h get_next_line.h
+%.o: %.c so_long.h get_next_line.h
 	$(CC) -o $@ -c  $< 
 
 $(NAME): $(OBJECT) 

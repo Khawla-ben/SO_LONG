@@ -6,7 +6,7 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/07 22:43:25 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 14:22:10 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/13 14:56:02 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,4 +100,10 @@ void	my_function(t_data *my_data, int c_p_indice_x, int c_p_indice_y)
 	my_function(my_data, c_p_indice_x + 1, c_p_indice_y);
 	my_function(my_data, c_p_indice_x, c_p_indice_y - 1);
 	my_function(my_data, c_p_indice_x, c_p_indice_y + 1);
+}
+
+void	exit_f(void)
+{
+	write(2, "Error\n", 6);
+	exit(1);
 }

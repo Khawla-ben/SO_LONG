@@ -6,41 +6,70 @@
 /*   By: kben-ham <kben-ham@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/10 19:53:23 by kben-ham          #+#    #+#             */
-/*   Updated: 2023/02/12 14:45:46 by kben-ham         ###   ########.fr       */
+/*   Updated: 2023/02/14 15:52:01 by kben-ham         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-static void	check_enemy(int i, int j, t_data *my_data)
+static void	put_it(int i, int j, t_data *my_data)
 {
-	if (my_data->all[i][j] == 'N')
-	{
+	if (my_data->n_n <= 100)
 		mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
-			my_data->im_space, j * 60, i * 60);
-		if (my_data->n_n <= 300)
-			mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
-				my_data->im_enemy2, j * 60, i * 60);
-		else if (my_data->n_n >= 300 && my_data->n_n <= 600)
-			mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
-				my_data->im_enemy3, j * 60, i * 60);
-		else if (my_data->n_n >= 600 && my_data->n_n <= 900)
-			mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
-				my_data->im_enemy1, j * 60, i * 60);
+			my_data->im_enemy3, j * 60, i * 60);
+	else if (my_data->n_n > 100 && my_data->n_n <= 200)
+		mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
+			my_data->im_enemy1, j * 60, i * 60);
+	else if (my_data->n_n > 200 && my_data->n_n <= 300)
+		mlx_put_image_to_window(my_data->mlx, my_data->mlx_win,
+			my_data->im_enemy2, j * 60, i * 60);
+	else
+		my_data->n_n = 0;
+	my_data->n_n++;
+}
+
+static void	move_it(int i, int j, t_data *my_data)
+{
+	if (my_data->m_n == 0)
+	{
+		if (my_data->all[i][j - 1] == '0')
+		{
+			my_data->all[i][j] = '0';
+			my_data->all[i][j - 1] = 'N';
+		}
+		else if (my_data->all[i][j - 1] == 'P')
+		{
+			write(1, "YOU LOSE !!!", 12);
+			exit(1);
+		}
 		else
-			my_data->n_n = 0;
-		my_data->n_n++;
+			my_data->m_n = 1;
 	}
 }
 
-int	draw_enemy(t_data *my_data)
+void	check_enemy(int i, int j, t_data *my_data)
 {
-	my_data->i = -1;
-	while (++my_data->i < my_data->count)
+	put_it(i, j, my_data);
+	if (my_data->n_n_n == 20)
 	{
-		my_data->j = -1;
-		while (++my_data->j < my_data->num)
-			check_enemy(my_data->i, my_data->j, my_data);
+		move_it(i, j, my_data);
+		if (my_data->m_n == 1)
+		{
+			if (my_data->all[i][j + 1] == '0')
+			{
+				my_data->all[i][j] = '0';
+				my_data->all[i][j + 1] = 'N';
+			}
+			else if (my_data->all[i][j + 1] == 'P')
+			{
+				write(1, "YOU LOSE !!!", 12);
+				exit(1);
+			}
+			else
+				my_data->m_n = 0;
+		}
 	}
-	return (0);
+	else if (my_data->n_n_n > 40)
+		my_data->n_n_n = 0;
+	my_data->n_n_n++;
 }
