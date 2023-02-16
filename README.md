@@ -1,6 +1,6 @@
 # SO_LONG
 
-
+Description
 
 This project is a small 2D game with minilibx. You'll learn about textures, sprites and tiles.
 
@@ -13,3 +13,4 @@ https://harm-smits.github.io/42docs/libs/minilibx/prototypes.html#initialization
 https://source.leet.ma/project?project=so_long
 https://www.hackerearth.com/practice/algorithms/graphs/flood-fill-algorithm/tutorial/
 https://cdn.intra.42.fr/pdf/pdf/67474/en.subject.pdf
+https://www.freepik.com/search?format=search&query=enemy%202d%20game
