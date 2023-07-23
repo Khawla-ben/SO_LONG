@@ -1,9 +1,11 @@
 # SO_LONG
 
-Description
+Description :
+-------------
 
 This project is a small 2D game with minilibx. You'll learn about textures, sprites and tiles.
 
+these are some resources we used to do all the mandatory requirements :
 
 https://imageconvert.org/jpg-to-xpm#google_vignette
 https://www.shutterstock.com/
